@@ -31,7 +31,7 @@ public class CMSUtils {
 		if(index==-1)
 			throw new CMSException("Can't Unsubscribe-invaild Email!!!!");
 		//valid email
-		return "Removed Details of " + list.remove(index).get
+		return "Removed Details of " + list.remove(index);
 	}
 	}
 

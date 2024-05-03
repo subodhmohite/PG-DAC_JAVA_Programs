@@ -5,11 +5,14 @@ import java.util.Scanner;
 
 import com.app.banking.AcType;
 import com.app.banking.BankAccount;
+import com.app.custom_exceptions.BankingException;
+
 import static com.app.utils.BankingValidations.*;
+import com.app.utils.*;
 
 public class BankingApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws BankingException {
 		try (Scanner sc = new Scanner(System.in)) {
 			// start up : init phase
 			boolean exit = false;
@@ -27,12 +30,13 @@ public class BankingApp {
 					if (counter < accounts.length) {
 						System.out.println("Enter a/c details -  acctNo,  firstName, "
 								+ " lastName,  acType,  dob, creationDate, balance");
-						validateInputs(sc.nextInt(),sc.next(),sc.next(),sc.next(),sc.next(),sc.nextDouble());
+					BankAccount bankaccount=BankingValidations.validateInputs(sc.nextInt(),sc.next(),sc.next(),sc.next(),sc.next(),sc.next(),sc.nextDouble());
 					} else
 						System.out.println("Bank capacity full !!!!");
 
 					break;
-				case 2:
+				case 2://Display all
+					
 
 					break;
 
@@ -45,5 +49,7 @@ public class BankingApp {
 		} // JVM : sc.close()
 
 	}
+
+	
 
 }

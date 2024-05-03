@@ -17,7 +17,7 @@ public class CMSApplication {
 			// init D.S
 			List<Customer> customerList = new ArrayList<>();// size : 0 , init cap 10
 			while (!exit) {
-				System.out.println("Options : 1. Customer Sign Up 2. Display all 3.Login Customer 4.Update Password  0. Exit");
+				System.out.println("Options : 1. Customer Sign Up 2. Display all 3.Login Customer 4.Update Password 5.Unsubscribe  0. Exit");
 				System.out.println("Choose");
 				try {
 					switch (sc.nextInt()) {
@@ -52,7 +52,19 @@ public class CMSApplication {
 						
 					case 5://Unsubscribe
 						System.out.println("Enter email to unsubscribe ");
-						CMSUtils.deleteCustomerdetails(sc.next(),customerList);
+						CMSUtils.deleteCustomerDetails(sc.next(),customerList);
+						break;
+					
+					case 6://validate pasword
+						System.out.println("Enter a Password");
+						CMSValidations.validatePassword(sc.next());
+						break;
+					
+					case 7://Check the age under 21
+						System.out.println("Enter the Age");
+						CMSValidations.parseAndValidateDob(sc.next());
+						break;
+						
 
 					case 0:
 						exit = true;

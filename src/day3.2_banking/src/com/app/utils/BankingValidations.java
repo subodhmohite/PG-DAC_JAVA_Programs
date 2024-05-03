@@ -30,4 +30,5 @@ public class BankingValidations {
 		
 		return new BankAccount(acctno,fname,lname,type,birthDate,crDate,balance);
 	}
+	
 }

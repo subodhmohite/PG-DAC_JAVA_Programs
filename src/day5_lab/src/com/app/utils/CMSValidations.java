@@ -1,6 +1,7 @@
 package com.app.utils;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import com.app.core.Customer;
@@ -37,9 +38,29 @@ public class CMSValidations {
 		checkForDupCustomer(email, customers);
 		ServicePlan servicePlan = parseAndValidatePlanAndCharges
 				(plan, regAmount);
-		LocalDate bithDate = LocalDate.parse(dob);
+		LocalDate birthDate = LocalDate.parse(dob);
+		validatePassword(password);
 		// => all i/ps are valid , ret validated customer details to the caller
 		return new Customer(firstName, lastName, 
-				email, password, regAmount, bithDate, servicePlan);
+				email, password, regAmount, birthDate, servicePlan);
+		
+	}
+	
+	public static void validatePassword(String password) throws CMSException{
+		
+		String regEx = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})";
+		if(password.matches(regEx));
+		throw new CMSException("Invalid password");
+		
+	}
+	
+	public static LocalDate parseAndValidateDob(String dob) throws CMSException{
+		LocalDate birthDate = LocalDate.parse(dob);
+		int age=Period.between(birthDate, LocalDate.now()).getYears();
+		if(age<21)
+			throw new CMSException("Under Age!!");
+		return birthDate;
+		
+		
 	}
 }

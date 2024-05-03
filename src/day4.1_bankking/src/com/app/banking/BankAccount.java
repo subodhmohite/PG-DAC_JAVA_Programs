@@ -69,6 +69,7 @@ public class BankAccount {
 	// by UID based equality
 	// eg : acct no
 	@Override
+//	a.equals(acct)
 	public boolean equals(Object o) {
 		System.out.println("in acct's equals");
 		if (o instanceof BankAccount) {
